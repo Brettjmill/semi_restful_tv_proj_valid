@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Edit Show</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Edit Show {{ show.id }}</h1>
+        <form action="/shows/{{ show.id }}/update" method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="">Title</label>
+                <p>
+                    <input type="text" name="show_title" id="title_box" value="{{ show.title }}">
+                </p>
+            </div>
+            <div id="network_release_date">
+                <div>
+                    <label for="">Network</label>
+                    <p>
+                        <input type="text" name="show_network" value="{{ show.network }}">
+                    </p>
+                </div>
+                <div>
+                    <label for="">Release Date</label>
+                    <p>
+                        <input type="date" name="show_release_date" value="{{ show.release_date }}">
+                    </p>
+                </div>
+            </div>
+            <div>
+                <label for="">Description</label>
+                <p>
+                    <textarea name="show_description" id="desc_box">{{ show.description }}</textarea>
+                </p>
+            </div>
+            <div id="button">
+                <button>Update</button>
+            </div>
+            <br>
+        </form>
+        <div>
+            <a href="/shows/{{ show.id }}">Go to Show</a>
+            <br>
+            <a href="/shows">Go Back</a>
+        </div>
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

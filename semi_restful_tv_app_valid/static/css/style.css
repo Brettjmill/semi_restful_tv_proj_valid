@@ -1,0 +1,37 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#container{
+    margin: 5% 15%;
+}
+
+#network_release_date{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#network_release_date input{
+    width: 100%;
+}
+
+#title_box{
+    width: 100%;
+}
+
+#desc_box{
+    width: 100%;
+    padding: 0px 0px 150px 5px;
+}
+
+#button{
+    text-align: center;
+}
+
+.messages{
+    color: red;
+    font-weight: bold;
+}
